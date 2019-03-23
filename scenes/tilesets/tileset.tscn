@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/pipe-tileset.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.8936, 5.92066 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11.6497, 7.12269 )
+
+[node name="tileset" type="Node2D"]
+
+[node name="pipe_head" type="Sprite" parent="."]
+position = Vector2( 40, 40 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 14, 26, 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="pipe_head"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe_head/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="pipe_head_downwards" type="Sprite" parent="."]
+position = Vector2( 255.065, 42.9261 )
+rotation = 3.14159
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 14, 26, 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="pipe_head_downwards"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe_head_downwards/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="pipe" type="Sprite" parent="."]
+position = Vector2( 130, 40 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 26, 14 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="pipe"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe/StaticBody2D"]
+shape = SubResource( 2 )
+

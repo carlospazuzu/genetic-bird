@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/background/ground_parallax_background.gd" type="Script" id=1]
+[ext_resource path="res://assets/ground-background.png" type="Texture" id=2]
+
+[node name="parallax_background" type="ParallaxBackground"]
+scale = Vector2( 3, 3 )
+transform = Transform2D( 3, 0, 0, 3, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="parallax_layer" type="ParallaxLayer" parent="."]
+
+[node name="sprite" type="Sprite" parent="parallax_layer"]
+texture = ExtResource( 2 )
+centered = false
+

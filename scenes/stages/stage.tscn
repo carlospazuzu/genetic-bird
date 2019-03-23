@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/stages/population.gd" type="Script" id=1]
+[ext_resource path="res://scenes/background/parallax_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/background/ground_parallax_background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/tilesets/actual_tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://scenes/stages/tilemap.gd" type="Script" id=5]
+[ext_resource path="res://assets/ground-background.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/04B_03__.TTF" type="DynamicFontData" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 84.4581, 27.8318 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+outline_color = Color( 0.843137, 0.658824, 0.298039, 1 )
+font_data = ExtResource( 7 )
+
+[node name="stage" type="Node2D"]
+
+[node name="population" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="parallax_background2" parent="." instance=ExtResource( 2 )]
+
+[node name="parallax_background" parent="." instance=ExtResource( 3 )]
+offset = Vector2( 0, 650 )
+transform = Transform2D( 3, 0, 0, 3, 0, 650 )
+
+[node name="tilemap" type="TileMap" parent="."]
+scale = Vector2( 3, 3 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 1, 1 )
+format = 1
+tile_data = PoolIntArray( 167, 2, 0, 458919, 2, 0, 1114279, 2, 0, 1769639, 2, 0, 2490535, 2, 0, 2818215, 2, 0, 3408039, 2, 0, 4260007, 2, 0, 5177511, 0, 0, 10027175, 1, 0, 10813607, 2, 0, 11600039, 2, 0, 12386471, 2, 0, 12714151, 2, 0, 13303975, 2, 0 )
+script = ExtResource( 5 )
+
+[node name="ground_collision" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 252.1, 734.871 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 6 )
+
+[node name="ground" type="StaticBody2D" parent="ground_collision"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground_collision/ground"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ceiling_collision" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 253.708, -82.7459 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 6 )
+
+[node name="ground" type="StaticBody2D" parent="ceiling_collision"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling_collision/ground"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="label" type="Label" parent="."]
+margin_left = 5.0
+margin_top = 740.0
+margin_right = 164.0
+margin_bottom = 764.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.843137, 0.658824, 0.298039, 1 )
+text = "GENERATION 1"
+
